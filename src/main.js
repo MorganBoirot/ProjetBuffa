@@ -5,7 +5,7 @@ import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 import VueRouter from 'vue-router'
 import Restaurants from "./components/Restaurants.vue";
-//import RestaurantDetail from "./components/RestaurantDetail.vue";
+import RestaurantDetail from "./components/RestaurantDetail.vue";
 import HelloWorld from "./components/HelloWorld.vue";
 import vuetify from './plugins/vuetify';
 
@@ -28,7 +28,10 @@ const router = new VueRouter({
       path: '/restaurants', 
       component: Restaurants 
     },
-    
+    { 
+      path: '/restaurant/:id', 
+      component: RestaurantDetail 
+    },
   ],
   mode:'history'
 });

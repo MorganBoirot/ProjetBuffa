@@ -56,7 +56,7 @@
             <md-table-row slot="md-table-row" slot-scope="{ item }">
                 <md-table-cell md-label="Name" md-sort-by="name">{{ item.name }}</md-table-cell>
                 <md-table-cell md-label="Cuisine" md-sort-by="cuisine">{{ item.cuisine }}</md-table-cell>
-                <!--<md-table-cell md-label="Details"><router-link :to="'restaurant/'+item._id">Details</router-link></md-table-cell>-->
+                <md-table-cell md-label="Details"><router-link :to="'restaurant/'+item._id">Details</router-link></md-table-cell>
                 <md-table-cell><button v-on:click="demandeModif(item._id, item.name, item.cuisine)">Modifier</button></md-table-cell>
                 <md-table-cell><button v-on:click="supprimerRestaurant(item._id)">Supprimer</button></md-table-cell>
             </md-table-row>
