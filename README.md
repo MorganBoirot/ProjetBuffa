@@ -1,4 +1,4 @@
-# projetbuffa
+# projetbuffa Par Morgan BOIROT et Louis SOLANA
 
 ## Project setup
 ```
