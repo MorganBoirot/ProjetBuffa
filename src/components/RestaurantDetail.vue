@@ -6,7 +6,7 @@
     <p> Type : {{cuisine}} </p>
     <p> Adresse : {{addr}} </p>
     <br/>
-    <img src="../assets/restaurant2.jpg"/>
+    <img id="img1" :src="imgUrl"/>
     <restaurant-carte :item="carte"></restaurant-carte>
     <restaurant-menu :item="menus"></restaurant-menu>
     <restaurant-evaluation :item="evaluations"></restaurant-evaluation>
@@ -50,6 +50,10 @@ export default {
       apiURL: "http://localhost:8080/api/restaurants",
       carte: [],
       menus: [],
+      Img:["/img/restaurant1.5ba12bcf.jpg",
+      "/img/restaurant0.3d4e99aa.jpg",
+      "/img/restaurant2.56064ddf.jpg",
+      "/img/restaurant3.9982a728.jpg"],
       evaluations: []
     };
   },
@@ -74,11 +78,12 @@ export default {
           this.menus = reponseJS.restaurant.menu;
           this.evaluations = reponseJS.restaurant.grades;
           this.coord = reponseJS.restaurant.address.coord;
+          
         } catch (err) {
           console.log("Erreur dans les fetchs GET " + err.msg);
         }
-         let i = this.getRandomInt();
-        this.imgUrl = "../assets/restaurant" + i + ".jpg";
+          let i = this.getRandomInt();
+          this.imgUrl=this.Img[i];
     },
     getRandomInt() {
       return Math.floor(Math.random() * Math.floor(3));
