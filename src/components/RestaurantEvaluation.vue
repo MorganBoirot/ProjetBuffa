@@ -2,18 +2,20 @@
   <div>
     <p>---------------------------------</p>
     <h1> Notes et commentaires </h1>
-    <div v-for="evaluation in evaluations" :key="evaluation.nom">
+    <div v-for="evaluation in item" :key="evaluation">
       <p>---------------------------------</p>
-      <p> Utilisateur : {{evaluation.nom}}</p>
-      <p> Note : {{evaluation.grade}}/5</p>
-      <p> Commentaire : {{evaluation.commentaire}}</p>
+      <p> Date : {{evaluation.date}}</p>
+      <p> Grade : {{evaluation.grade}}</p>
+      <p> Note : {{evaluation.score}}</p>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['value'],
+  props: {
+    item: Array
+  },
 
   data: function(){
     return {

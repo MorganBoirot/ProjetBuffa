@@ -6,7 +6,7 @@
     <img src="../assets/restaurant2.jpg"/>
     <restaurant-carte :item="carte"></restaurant-carte>
     <restaurant-menu :item="menus"></restaurant-menu>
-    <restaurant-evaluation v-model="evaluations"></restaurant-evaluation>
+    <restaurant-evaluation :item="evaluations"></restaurant-evaluation>
     <div class="restaurant-map">esfsef</div>
   </div>
 </template>
@@ -46,11 +46,6 @@ export default {
       evaluations: []
     };
   },
-  /*mounted() {
-    console.log("AVANT AFFICHAGE !");
-    console.log("On va chercher les détails du restaurant id = " + this.$route.params.id)
-    console.log("ID = " + this.id);
-  },*/
   mounted() {
     this.getDataFromServer();
   },
@@ -78,8 +73,8 @@ export default {
         this.imgUrl = "../assets/restaurant" + i + ".jpg";
     },
     getRandomInt() {
-           return Math.floor(Math.random() * Math.floor(3));
-      },    
+      return Math.floor(Math.random() * Math.floor(3));
+    },    
   }
 };
 </script>
