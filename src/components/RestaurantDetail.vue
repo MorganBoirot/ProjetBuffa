@@ -1,11 +1,9 @@
 <template>
   <div>
     <h1>Details du restaurant {{nom}}</h1>
-    <p> Type : {{restaurant.cuisine}} </p>
-    <p> Adresse : {{restaurant}} </p>
-    <p> Longitude : {{lon}} - Latitute : {{lat}} </p>
-    <p> Description du quartier : {{quartier}} </p>
-    <img src="../assets/restaurant.jpg">
+    <p> Type : {{cuisine}} </p>
+    <p> Adresse : {{addr}} </p>
+    <img :src="this.imgUrl">
     <restaurant-carte v-model="carte"></restaurant-carte>
     <restaurant-menu v-model="menus"></restaurant-menu>
     <restaurant-evaluation v-model="evaluations"></restaurant-evaluation>
@@ -37,7 +35,8 @@ export default {
       restaurant: {},
       nom: "",
       cuisine: "",
-      adr: "",
+      addr: "",
+      imgUrl: "",
       lon: "",
       lat: "",
       quartier: "",
@@ -141,12 +140,19 @@ export default {
           let reponseJS = await reponseJSON.json();
           this.restaurant = reponseJS.restaurant;
           this.nom = reponseJS.restaurant.name;
+          this.cuisine = reponseJS.restaurant.cuisine;
+          this.addr = reponseJS.restaurant.address.building + " " + reponseJS.restaurant.address.street + ", " + reponseJS.restaurant.address.zipcode + " " + reponseJS.restaurant.borough; 
           console.log(reponseJS);
         } catch (err) {
           console.log("Erreur dans les fetchs GET " + err.msg);
         }
+        let i = this.getRandomInt();
+        this.imgUrl = "../assets/restaurant" + i + ".jpg";
+        console.log(this.imgUrl);
     },
-    
+    getRandomInt() {
+           return Math.floor(Math.random() * Math.floor(3));
+      },    
   }
 };
 </script>
