@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Details du restaurant {{id}}</h1>
+    <h1>Details du restaurant {{nom}}</h1>
     <p> Type : {{restaurant.cuisine}} </p>
     <p> Adresse : {{restaurant}} </p>
     <p> Longitude : {{lon}} - Latitute : {{lat}} </p>
@@ -35,7 +35,7 @@ export default {
   data:() => {
     return {
       restaurant: {},
-      //nom: "",
+      nom: "",
       cuisine: "",
       adr: "",
       lon: "",
@@ -125,44 +125,12 @@ export default {
     console.log("On va chercher les détails du restaurant id = " + this.$route.params.id)
     console.log("ID = " + this.id);
   },*/
-  updated() {
+  mounted() {
     this.getDataFromServer();
     console.log("ID = " + this.id);
   },
   methods: {
     async getDataFromServer() {
-      // ici on fait un fetch pour récupérer le détail du restaurant
-      //let url = this.apiURL + "/:id=" +
-      //          this.id;
-      //let url = this.apiURL + "/:id=" + this.$route.params.id;
-    
-      /*try {
-        let reponseJSON   = await fetch(url);
-        let reponseJS     = await reponseJSON.json();
-        this.restaurants   = reponseJS.data;
-        this.restaurants.forEach(element => {
-          if (element._id == this.id){
-            this.restaurant = element;
-          }
-        
-        });
-        //this.restaurant = this.restaurants.
-      } catch(err) {
-        console.log("Erreur dans les fetchs GET " + err.msg);
-      } */
-      
-      /*fetch(url)
-      .then(reponseJSON => {
-        return reponseJSON.json()
-        .then(res => {
-          console.log('DETAIL', res.restaurant)
-          this.restaurant = res.restaurant;
-        });
-      })
-      .catch(function(err){
-        console.log("Erreur dans les fetchs GET " + err.msg);
-      })*/
-
       
         let url = this.apiURL + "/" + this.id;
 
@@ -172,6 +140,7 @@ export default {
           });
           let reponseJS = await reponseJSON.json();
           this.restaurant = reponseJS.restaurant;
+          this.nom = reponseJS.restaurant.name;
           console.log(reponseJS);
         } catch (err) {
           console.log("Erreur dans les fetchs GET " + err.msg);
