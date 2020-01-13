@@ -7,6 +7,7 @@
     <restaurant-carte :item="carte"></restaurant-carte>
     <restaurant-menu :item="menus"></restaurant-menu>
     <restaurant-evaluation :item="evaluations"></restaurant-evaluation>
+    <restaurant-map :item="coord"></restaurant-map>
     <div class="restaurant-map"></div>
   </div>
 </template>
@@ -15,13 +16,15 @@
 import RestaurantCarte from './RestaurantCarte';
 import RestaurantMenu from './RestaurantMenu';
 import RestaurantEvaluation from './RestaurantEvaluation';
+import RestaurantMap from './RestaurantMap';
 export default {
   name: "RestaurantDetail",
   props: {},
   components: {
     RestaurantCarte,
     RestaurantMenu,
-    RestaurantEvaluation
+    RestaurantEvaluation,
+    RestaurantMap
   },
   computed: { // computed data, permet de définir des data "calculées"
     id() {
