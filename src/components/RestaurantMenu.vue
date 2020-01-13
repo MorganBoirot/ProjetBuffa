@@ -2,7 +2,7 @@
   <div>
     <p>---------------------------------</p>
     <h1> Au menu </h1>
-    <div v-if="hasMenu">
+    <div v-if="item">
       <div v-for="menu in item" :key="menu.nom">
         <p>---------------------------------</p>
         <h2>{{menu.nom}}</h2>
@@ -28,21 +28,12 @@ export default {
 
   data: function(){
     return {
-      //detailMenu: false
-      hasMenu: true
     }
   },
-  updated(){
-    this.hasMenu = this.verifMenu()
+  mounted(){
   },
   methods: {
-    verifMenu(){
-      if(this.item.length > 0){
-        return true;
-      } else {
-        return false;
-      }
-    }
+   
   }
 };
 </script>

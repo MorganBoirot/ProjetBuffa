@@ -29,7 +29,7 @@ export default {
     }
   },
   updated(){
-    this.hasEval = this.verifNote()
+    this.hasEval = this.verifNote();
   },
   methods: {
     verifNote(){

@@ -2,7 +2,7 @@
   <div>
     <p>---------------------------------</p>
     <h1> La carte </h1>
-    <div v-if="hasCarte">  
+    <div v-if="item">  
       <div v-for="carte in item" :key="carte.nom">
         <p>---------------------------------</p>
         <h2> Les {{carte.nom}} </h2>
@@ -27,20 +27,12 @@ export default {
 
   data: function(){
     return {
-      hasCarte: true
     }
   },
-  updated(){
-    this.hasCarte = this.verifCarte()
+  mounted(){
+    
   },
   methods: {
-    verifCarte(){
-      if(this.item.length > 0){
-        return true;
-      } else {
-        return false;
-      }
-    }
   }
 };
 </script>
