@@ -1,39 +1,67 @@
 <template>
 <div>
-  <p>
-    Rechercher par nom:
-    <input type="text" v-model="nomRecherche" v-on:input="getDataFromServer()" />
-  </p>
+  <br/>
+  <h1>Nombre de restaurants : {{nbRestaurants}}</h1><br/>
+  <md-button class="md-raised md-primary" v-on:click="pagePrecedente()" v-bind:disabled="page==0">Précédent</md-button>
+  <md-button class="md-raised md-primary" v-on:click="pageSuivante()" :disabled="page == nbPagesDeResultats">Suivant</md-button>
+  <br/>
   <p>
     Nombre de restaurants par page :
-    <input
+    <vue-slider 
+      ref="slider"
       type="range"
       min="2"
       max="100"
       value="10"
-      v-on:input="getDataFromServer()"
-      v-model="pagesize"
+      v-on:change="getDataFromServer()"
+      v-model="pagesize" 
     />
     {{pagesize}}
-  </p>
-  <h1>Nombre de restaurants : {{nbRestaurants}}</h1>
-  <button v-on:click="pagePrecedente()" v-bind:disabled="page==0">Précédent</button>
-  <button v-on:click="pageSuivante()" :disabled="page == nbPagesDeResultats">Suivant</button>
- 
-  <H1>TABLE VUE-MATERIAL</H1>
+  </p><br/><br/>
+  
   <div>
     <form v-if="isInModif" v-on:submit="modifierRestaurant" method="post">
       <h1>Modifier le restaurant {{nomModif}} :</h1>
-      Nom du restaurant:<input type="text" v-model="nom" required>
-      Type de cuisine:<input type="text" v-model="cuisine" required>
-      <button type="submit">Modifier</button>
+      <div class="md-layout md-gutter">
+        <div class="md-layout-item">
+          <md-field>
+            <label>Nom du restaurant</label>
+            <md-input v-model="nom" required></md-input>
+          </md-field>
+        </div>
+        <div class="md-layout-item">
+          <md-field>
+            <label>Type de cuisine</label>
+            <md-input v-model="cuisine" required></md-input>
+          </md-field>
+        </div>
+          <div class="md-layout-item">
+            <md-button class="md-raised md-primary" type="submit">Modifier</md-button>
+          </div>
+      </div>
     </form>
     <form v-else v-on:submit="ajouterRestaurant" method="post">
-      <h1>Ajouter un nouveau restaurant :</h1>
-      Nom du restaurant:<input type="text" v-model="nom" required>
-      Type de cuisine:<input type="text" v-model="cuisine" required>
-      <button type="submit">Ajouter</button>
+      <h1>Ajouter un nouveau restaurant :</h1><br/>
+      <div class="md-layout md-gutter">
+        <div class="md-layout-item">
+          <md-field>
+            <label>Nom du restaurant</label>
+            <md-input v-model="nom" required></md-input>
+          </md-field>
+        </div>
+        <div class="md-layout-item">
+          <md-field>
+            <label>Type de cuisine</label>
+            <md-input v-model="cuisine" required></md-input>
+          </md-field>
+        </div>
+          <div class="md-layout-item">
+            <md-button class="md-raised md-primary" type="submit">Ajouter</md-button>
+          </div>
+      </div>
     </form>
+    
+    <br/>
   </div>
         <md-table v-model="restaurants" md-sort="name" md-sort-order="asc" md-card md-fixed-header>
             <md-table-toolbar>
@@ -42,7 +70,7 @@
                 </div>
 
                 <md-field md-clearable class="md-toolbar-section-end">
-                    <md-input placeholder="Search by name..." v-model="nomRecherche" @input="getDataFromServer()" />
+                    <md-input placeholder="Rechercher par Nom" v-model="nomRecherche" @input="getDataFromServer()" />
                 </md-field>
             </md-table-toolbar>
 
@@ -65,7 +93,12 @@
 </template>
 
 <script>
+import VueSlider from 'vue-slider-component'
+import 'vue-slider-component/theme/antd.css'
 export default {
+  components: {
+    VueSlider
+  },
   name: "Restaurants",
   props: {},
   data: function() {
@@ -85,7 +118,6 @@ export default {
     };
   },
   mounted() {
-    console.log("AVANT AFFICHAGE !");
     this.getDataFromServer();
   },
   methods: {
@@ -191,5 +223,4 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 </style>

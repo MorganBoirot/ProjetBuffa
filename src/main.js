@@ -10,6 +10,7 @@ import HelloWorld from "./components/HelloWorld.vue";
 import vuetify from './plugins/vuetify';
 import * as VueGoogleMaps from 'vue2-google-maps'
 
+
 // configs... 
 Vue.use(VueGoogleMaps, {
   load: {
@@ -27,7 +28,7 @@ const router = new VueRouter({
       path: '/', 
       component: HelloWorld, 
       props:{
-        msg:" site des restaurants"
+        msg:"Site des restaurants"
       } 
     },
     { 

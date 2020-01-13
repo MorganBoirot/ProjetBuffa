@@ -1,9 +1,13 @@
 <template>
   <div id="app">
-    <router-link to="/">[Home]</router-link>
-    <router-link to="/restaurants">[Restaurants]</router-link>
+    <md-tabs md-sync-route>
+    <md-tab id="tab-home" md-label="Home" to="/" exact></md-tab>
+      <md-tab id="tab-restaurants" md-label="Restaurants" to="/restaurants"></md-tab>
+    </md-tabs>
      <router-view></router-view>
+  
   </div>
+  
 </template>
 
 <script>

@@ -1,8 +1,11 @@
 <template>
   <div>
+    <br/><br/>
     <h1>Details du restaurant {{nom}}</h1>
+    <br/>
     <p> Type : {{cuisine}} </p>
     <p> Adresse : {{addr}} </p>
+    <br/>
     <img src="../assets/restaurant2.jpg"/>
     <restaurant-carte :item="carte"></restaurant-carte>
     <restaurant-menu :item="menus"></restaurant-menu>
