@@ -23,19 +23,9 @@ export default {
 
   data: function(){
     return {
-      menus: this.value,
       //detailMenu: false
     }
-  }//,
-  // methods: {
-  //   afficheMenu() {
-  //     if (this.detailMenu) {
-  //       this.detailMenu = false;
-  //     } else {
-  //       this.detailMenu = true;
-  //     }
-  //   }
-  // }
+  }
 };
 </script>
 

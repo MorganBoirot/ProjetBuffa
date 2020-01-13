@@ -22,12 +22,9 @@ export default {
 
   data: function(){
     return {
-      cartes: this.value
     }
   },
   mounted(){
-    console.log(this.cartes + "POUET");
-    console.log("TESTETSTSTTEUVIVOV");
   }
 };
 </script>

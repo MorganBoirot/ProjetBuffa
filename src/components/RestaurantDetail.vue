@@ -48,6 +48,7 @@ export default {
   },
   mounted() {
     this.getDataFromServer();
+    console.log(this.restaurant);
   },
   methods: {
     async getDataFromServer() {

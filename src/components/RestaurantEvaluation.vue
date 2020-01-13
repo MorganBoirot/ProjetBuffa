@@ -3,7 +3,7 @@
     <p>---------------------------------</p>
     <h1> Notes et commentaires </h1>
     <div v-if="hasEval">
-      <div v-for="evaluation in item" :key="evaluation"> 
+      <div v-for="evaluation in item" :key="evaluation.date"> 
         <p>---------------------------------</p>
         <p> Date : {{evaluation.date}}</p>
         <p> Grade : {{evaluation.grade}}</p>
@@ -25,10 +25,10 @@ export default {
   data: function(){
     return {
       evaluations: this.value,
-      hasEval: false
+      hasEval: true
     }
   },
-  mounted(){
+  updated(){
     this.hasEval = this.verifNote()
   },
   methods: {
