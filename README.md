@@ -5,25 +5,30 @@
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Project StartUp
 ```
+cd serveur
+node serverCrudWithMongo.js
+mongod
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Données
+Les données 1 à 50 sont les seules modifiés pour voir un menu
+
+EXEMPLE D'ID :  
 ```
-npm run build
+5d8b7b7ae3ec28e1d5e643b2
+5d8b7b7ae3ec28e1d5e643b3
+5d8b7b7ae3ec28e1d5e643b4
+5d8b7b7ae3ec28e1d5e643b5                             
+5d8b7b7ae3ec28e1d5e643b6
+5d8b7b7ae3ec28e1d5e643b7
 ```
 
-### Run your tests
+Pas tous les restaurants n'ont de notes.
+EXEMPLE DE DONNÉES AVEC NOTES :   
 ```
-npm run test
+5d8b7b79e3ec28e1d5e5e0b5
+5d8b7b79e3ec28e1d5e5e0ba
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
