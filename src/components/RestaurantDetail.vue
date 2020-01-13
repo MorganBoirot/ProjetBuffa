@@ -7,7 +7,7 @@
     <restaurant-carte :item="carte"></restaurant-carte>
     <restaurant-menu :item="menus"></restaurant-menu>
     <restaurant-evaluation :item="evaluations"></restaurant-evaluation>
-    <div class="restaurant-map">esfsef</div>
+    <div class="restaurant-map"></div>
   </div>
 </template>
 

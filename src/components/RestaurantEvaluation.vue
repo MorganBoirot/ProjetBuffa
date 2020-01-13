@@ -2,11 +2,16 @@
   <div>
     <p>---------------------------------</p>
     <h1> Notes et commentaires </h1>
-    <div v-for="evaluation in item" :key="evaluation">
-      <p>---------------------------------</p>
-      <p> Date : {{evaluation.date}}</p>
-      <p> Grade : {{evaluation.grade}}</p>
-      <p> Note : {{evaluation.score}}</p>
+    <div v-if="hasEval">
+      <div v-for="evaluation in item" :key="evaluation"> 
+        <p>---------------------------------</p>
+        <p> Date : {{evaluation.date}}</p>
+        <p> Grade : {{evaluation.grade}}</p>
+        <p> Note : {{evaluation.score}}</p>
+      </div>
+    </div>
+    <div v-else>
+      <p>Aucune note disponible</p>
     </div>
   </div>
 </template>
@@ -19,7 +24,20 @@ export default {
 
   data: function(){
     return {
-      evaluations: this.value
+      evaluations: this.value,
+      hasEval: false
+    }
+  },
+  mounted(){
+    this.hasEval = this.verifNote()
+  },
+  methods: {
+    verifNote(){
+      if(this.item.length > 0){
+        return true;
+      } else {
+        return false;
+      }
     }
   }
 };
