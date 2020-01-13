@@ -39,6 +39,7 @@ export default {
       nom: "",
       cuisine: "",
       addr: "",
+      coord: [],
       imgUrl: "",
       lon: "",
       lat: "",
@@ -51,7 +52,6 @@ export default {
   },
   mounted() {
     this.getDataFromServer();
-    console.log(this.restaurant);
   },
   methods: {
     async getDataFromServer() {
@@ -70,6 +70,7 @@ export default {
           this.carte = reponseJS.restaurant.carte;
           this.menus = reponseJS.restaurant.menu;
           this.evaluations = reponseJS.restaurant.grades;
+          this.coord = reponseJS.restaurant.address.coord;
         } catch (err) {
           console.log("Erreur dans les fetchs GET " + err.msg);
         }
