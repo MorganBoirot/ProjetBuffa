@@ -2,13 +2,13 @@
   <div>
     <p>---------------------------------</p>
     <h1> La carte </h1>
-    <div v-for="carte in cartes" :key="carte.nom">
+    <div v-for="carte in item" :key="carte.nom">
       <p>---------------------------------</p>
       <h2> Les {{carte.nom}} </h2>
       <div v-for="plat in carte.plats" :key="plat.nom">
         <h3> {{plat.nom}} </h3>
-        <p> {{plat.description}} </p>
-        <img src="#"/>
+        <p> {{plat.desription}} </p>
+        <!-- <img src="#"/> -->
         <p> Prix : {{plat.prix}}€</p>
       </div>
     </div>
@@ -17,12 +17,17 @@
 
 <script>
 export default {
-  props: ['value'],
+  props: {item: Array
+  },
 
   data: function(){
     return {
       cartes: this.value
     }
+  },
+  mounted(){
+    console.log(this.cartes + "POUET");
+    console.log("TESTETSTSTTEUVIVOV");
   }
 };
 </script>

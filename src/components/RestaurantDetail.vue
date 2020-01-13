@@ -3,9 +3,9 @@
     <h1>Details du restaurant {{nom}}</h1>
     <p> Type : {{cuisine}} </p>
     <p> Adresse : {{addr}} </p>
-    <img :src="this.imgUrl">
-    <restaurant-carte v-model="carte"></restaurant-carte>
-    <restaurant-menu v-model="menus"></restaurant-menu>
+    <img src="../assets/restaurant2.jpg"/>
+    <restaurant-carte :item="carte"></restaurant-carte>
+    <restaurant-menu :item="menus"></restaurant-menu>
     <restaurant-evaluation v-model="evaluations"></restaurant-evaluation>
     <div class="restaurant-map">esfsef</div>
   </div>
@@ -41,82 +41,9 @@ export default {
       lat: "",
       quartier: "",
       apiURL: "http://localhost:8080/api/restaurants",
-      carte: [{
-        nom: "Entrées",
-        plats: [{
-          nom: "Salade de chèvres chauds",
-          description: "Salade composée de salade et de fromage de chèvre chaud",
-          img: "",
-          prix: "12"},
-          {
-          nom: "Plateau de foie gras",
-          description: "Plateau avec du foie gras lol",
-          img: "",
-          prix: "14"},
-          {
-          nom: "Salade de poulpe",
-          description: "Salade avec du poulpe dedans",
-          img:"",
-          prix: "15"}]},
-        {
-        nom: "Plats",
-        plats: [{
-          nom: "Salade de chèvres chauds",
-          description: "Salade composée de salade et de fromage de chèvre chaud",
-          img: "",
-          prix: "12"},
-          {
-          nom: "Plateau de foie gras",
-          description: "Plateau avec du foie gras lol",
-          img: "",
-          prix: "14"},
-          {
-          nom: "Salade de poulpe",
-          description: "Salade avec du poulpe dedans",
-          img:"",
-          prix: "15"}]},
-        {
-        nom: "Desserts",
-        plats: [{
-          nom: "Salade de chèvres chauds",
-          description: "Salade composée de salade et de fromage de chèvre chaud",
-          img: "",
-          prix: "12"},
-          {
-          nom: "Plateau de foie gras",
-          description: "Plateau avec du foie gras lol",
-          img: "",
-          prix: "14"},
-          {
-          nom: "Salade de poulpe",
-          description: "Salade avec du poulpe dedans",
-          img:"",
-          prix: "15"}]
-      }],
-      menus: [{
-        nom: "Menu Simple",
-        prix: 20,
-        entrees: ["Salade de chèvres chauds", "Plateau de foie gras", "Tapas"],
-        plats: ["Filet mignon en croûte", "Dobe de sanglier", "Cuisse de canard"],
-        desserts: ["Mousse au chocolat", "Glace", "Banane flambées"]
-      },
-      {
-        nom: "Menu gastronomique",
-        prix: 32,
-        entrees: ["Salade de poulpe", "Tartare de saumon", "Caviar"],
-        plats: ["Souris d'agneau", "Tartare de boeuf", "Gambas sautées"],
-        desserts: ["Tiramisu", "Crème brulée", "Profiterols"]
-      }],
-      evaluations: [{
-        nom: "Louis",
-        grade: "5",
-        commentaire:"OK"
-      },
-      {
-        nom: "Max",
-        grade: "3",
-        commentaire:"BOF"
-      }]
+      carte: [],
+      menus: [],
+      evaluations: []
     };
   },
   /*mounted() {
@@ -126,7 +53,6 @@ export default {
   },*/
   mounted() {
     this.getDataFromServer();
-    console.log("ID = " + this.id);
   },
   methods: {
     async getDataFromServer() {
@@ -142,13 +68,14 @@ export default {
           this.nom = reponseJS.restaurant.name;
           this.cuisine = reponseJS.restaurant.cuisine;
           this.addr = reponseJS.restaurant.address.building + " " + reponseJS.restaurant.address.street + ", " + reponseJS.restaurant.address.zipcode + " " + reponseJS.restaurant.borough; 
-          console.log(reponseJS);
+          this.carte = reponseJS.restaurant.carte;
+          this.menus = reponseJS.restaurant.menu;
+          this.evaluations = reponseJS.restaurant.grades;
         } catch (err) {
           console.log("Erreur dans les fetchs GET " + err.msg);
         }
-        let i = this.getRandomInt();
+         let i = this.getRandomInt();
         this.imgUrl = "../assets/restaurant" + i + ".jpg";
-        console.log(this.imgUrl);
     },
     getRandomInt() {
            return Math.floor(Math.random() * Math.floor(3));
